@@ -46,6 +46,12 @@ exports.delete = async (req, res) => {
 
 
 //Validações
+exports.validacaoPost = async (req, res, next) => {
+    if (req.body.estoque <= 0) {
+        res.status(400).send('Estoque precisa ser maior que 0!');
+    }
+    next();
+}
 
 exports.validacaoPut = async (req, res, next) => {
 

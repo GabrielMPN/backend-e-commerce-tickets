@@ -9,7 +9,7 @@ router.get('/', ingressos.get);
 
 router.get('/:id', ingressos.getOne);
 
-router.post('/', ingressos.post);
+router.post('/',ingressos.validacaoPost, ingressos.post);
 
 router.put('/:id', ingressos.validacaoPut, ingressos.put);
 

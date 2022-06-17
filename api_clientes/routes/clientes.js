@@ -9,7 +9,7 @@ router.get('/', clientes.get);
 
 router.get('/:id', clientes.getOne);
 
-router.post('/', clientes.post);
+router.post('/',clientes.validacaoPost, clientes.post);
 
 router.put('/:id', clientes.validacaoPut, clientes.put);
 

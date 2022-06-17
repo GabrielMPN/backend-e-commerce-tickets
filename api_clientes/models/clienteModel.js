@@ -8,7 +8,8 @@ const cliente = db.define('tb_clientes', {
     },
     email: {
         type: Sequelize.STRING(100),
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     senha: {
         type: Sequelize.STRING(20),

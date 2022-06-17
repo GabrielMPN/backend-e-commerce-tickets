@@ -9,12 +9,11 @@ exports.get = async (req, res) => {
 };
 
 exports.getOne = async (req, res) => {
-    const cliente = await clienteModel.findOne({where: {id: req.params.id}});
+    const cliente = await clienteModel.findOne({ where: { id: req.params.id } });
     return res.status(200).json(cliente);
 };
 
 exports.post = async (req, res) => {
-
     const novoCliente = await clienteModel.create({
         nome: req.body.nome,
         email: req.body.email,
@@ -35,17 +34,27 @@ exports.delete = async (req, res) => {
     try {
         const clienteParaDestruir = await clienteModel.findOne({ where: { id: req.params.id } });
         await clienteParaDestruir.destroy();
-    
+
         return res.status(200).send(`Cliente ${req.params.id} destruido com sucesso!`);
-    }catch(err) {
+    } catch (err) {
         return res.status(404).send(`Cliente não existe!`);
     }
-    
+
 };
 
 
 
 //Validações
+
+exports.validacaoPost = async (req, res, next) => {
+    const cliente = await clienteModel.findOne({ where: { email: req.body.email } });
+
+    if (cliente) {
+        return res.status(203).send('E-mail já existe!');
+    }
+
+    next();
+}
 
 exports.validacaoPut = async (req, res, next) => {
 
@@ -57,10 +66,10 @@ exports.validacaoPut = async (req, res, next) => {
 
     if (req.body.nome) {
         clienteEncontrado.nome = req.body.nome
-    } 
+    }
     if (req.body.email) {
         clienteEncontrado.email = req.body.email
-    } 
+    }
     if (req.body.senha) {
         clienteEncontrado.senha = req.body.senha
     }

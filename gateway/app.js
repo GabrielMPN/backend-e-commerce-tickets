@@ -19,9 +19,9 @@ app.use(
     })
 )
 
-const clienteServiceProxy = httpProxy("http://localhost:3004");
-const carrinhoServiceProxy = httpProxy("http://localhost:3002");
-const ingressoServiceProxy = httpProxy("http://localhost:3003");
+const clienteServiceProxy = httpProxy("http://localhost:3001");
+const carrinhoServiceProxy = httpProxy("http://localhost:3003");
+const ingressoServiceProxy = httpProxy("http://localhost:3004");
 
 app.get("/", (req, res) => res.send("Gateway API online!"))
 app.get('/clientes', (req, res, next) => clienteServiceProxy(req, res, next));

@@ -7,7 +7,7 @@ const ingressos = require('../controllers/ingressoController');
 //Rotas Ingressos
 router.get('/', ingressos.get);
 
-router.get('/:id', ingressos.getOne);
+router.get('/:id',ingressos.validacaoGetOne, ingressos.getOne);
 
 router.post('/',ingressos.validacaoPost, ingressos.post);
 

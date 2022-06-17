@@ -7,7 +7,7 @@ const clientes = require('../controllers/clienteController');
 //Rotas Clientes
 router.get('/', clientes.get);
 
-router.get('/:id', clientes.getOne);
+router.get('/:id',clientes.validacaoGetOne, clientes.getOne);
 
 router.post('/',clientes.validacaoPost, clientes.post);
 

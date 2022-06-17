@@ -78,3 +78,13 @@ exports.validacaoPut = async (req, res, next) => {
     next();
 };
 
+exports.validacaoGetOne = async (req, res, next) => {
+    const cliente = await clienteModel.findOne({ where: { id: req.params.id } });
+
+    if (!cliente) {
+        return res.status(404).send('Cliente não existe!');
+    };
+
+    next();
+}
+

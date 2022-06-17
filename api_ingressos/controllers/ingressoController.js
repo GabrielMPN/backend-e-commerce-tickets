@@ -76,13 +76,3 @@ exports.validacaoPut = async (req, res, next) => {
     next();
 };
 
-exports.validacaoGetOne = async (req, res, next) => {
-    const ingresso = await ingressoModel.findOne({ where: { id: req.params.id } });
-
-    if (!ingresso) {
-        return res.status(404).send('Ingresso não existe!');
-    };
-
-    next();
-}
-

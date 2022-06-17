@@ -19,7 +19,7 @@ app.use(
     })
 )
 
-const clienteServiceProxy = httpProxy("http://localhost:3001");
+const clienteServiceProxy = httpProxy("http://localhost:3004");
 const carrinhoServiceProxy = httpProxy("http://localhost:3002");
 const ingressoServiceProxy = httpProxy("http://localhost:3003");
 
